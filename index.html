@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:#0b0b0b;
+color:white;
+overflow:hidden;
+text-align:center;
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+transform:translateX(100%);
+transition:0.6s;
+padding:20px;
+box-sizing:border-box;
+overflow-y:auto;
+}
+
+.active{transform:translateX(0);}
+
+button{
+background:linear-gradient(45deg,#ff4da6,#ff0066);
+border:none;
+padding:12px 22px;
+color:white;
+border-radius:30px;
+margin:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+#cakeImg{
+width:320px;
+max-width:90%;
+filter:drop-shadow(0 0 25px pink);
+transition:0.4s;
+}
+
+.photoPop{
+animation:pop 0.6s ease;
+}
+
+@keyframes pop{
+0%{transform:scale(0.5);opacity:0;}
+100%{transform:scale(1);opacity:1;}
+}
+
+img{
+width:200px;
+margin:10px;
+border-radius:15px;
+box-shadow:0 0 20px #ff4da6;
+}
+
+.letter{
+display:none;
+background:#111;
+padding:20px;
+border-radius:20px;
+max-width:650px;
+text-align:left;
+line-height:1.6;
+max-height:55vh;
+overflow-y:auto;
+}
+
+#hearts{
+position:fixed;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+
+.heart{
+position:absolute;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);opacity:0;}
+}
+
+video{
+width:90%;
+max-width:500px;
+border-radius:20px;
+}
+
+#noBtn{position:absolute;}
+
+.finalBox{
+background:#111;
+padding:25px;
+border-radius:20px;
+max-width:600px;
+box-shadow:0 0 30px #ff4da6;
+animation:pop 0.8s ease;
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+
+<h1>🎂 Blow The Candles</h1>
+
+<img id="cakeImg" src="assets/cake_on.png">
+
+<button id="blowBtn" onclick="blowCandles()">Blow 💨</button>
+
+<div id="afterBlow" style="display:none;">
+<h2>HAPPY BIRTHDAY ❤️</h2>
+
+<img id="p1" src="assets/PHOTO1.jpg">
+<img id="p2" src="assets/PHOTO2.jpg">
+
+<p>
+You are my favorite notification.<br>
+My safe place.<br>
+My chaos and my calm.
+</p>
+
+<button onclick="go(2)">Next ➡️</button>
+</div>
+
+</div>
+
+<!-- PAGE 2 LETTER -->
+<div class="page" id="page2">
+
+<h2>💌 A Letter For You</h2>
+
+<button onclick="openLetter()">Tap to open 💌</button>
+
+<div class="letter" id="l1">
+<p>Hey..🤍,</p>
+
+<p>Sometimes I sit and think about how everything started back in our 8th standard days — two kids who didn’t even realize they were building a bond that would survive years, distance, moods, and all the chaos life throws at us. We grew up side by side, sharing the kind of memories that no one else will ever fully understand… the stupid laughs, the random fights, the tears we never showed the world, and the silent moments where just being there was enough.</p>
+
+<p>You’ve seen me at my lowest, and I’ve seen you at yours. We didn’t always have perfect days, but maybe that’s what made us real. Every argument only taught me how much you matter to me, and every time we came back stronger, it reminded me that some people are not just friends — they’re home. You’ve been my crime partner, my safe place, the person who knows my unfiltered self without me needing to explain anything.</p>
+
+<p>I love you — truly, deeply, and in a way words will never fully explain. I know you may not see me the same way, and that’s okay… because loving you has never been about conditions. No matter where life takes us, a part of me will always carry you with the same warmth and care. My love for you has been constant, growing quietly through every year we’ve known each other.</p>
+
+<p>No matter how much time passes or how life changes around us, one thing never did — us. Our bond stayed the same, just deeper, quieter, and stronger than before. And honestly, I wouldn’t trade all these years, all these memories, or you… for anything.</p>
+
+<p>Always your person, always your bestie ✨</p>
+</div>
+
+<div>
+<button onclick="go(1)">⬅️ Previous</button>
+<button onclick="go(3)">Next ➡️</button>
+</div>
+
+</div>
+
+<!-- PAGE 3 VIDEO -->
+<div class="page" id="page3">
+
+<h2>🎥 Just For You</h2>
+
+<video controls playsinline preload="metadata">
+<source src="assets/VIDEO.mp4">
+</video>
+
+<div>
+<button onclick="go(2)">⬅️ Previous</button>
+<button onclick="go(4)">Next ➡️</button>
+</div>
+
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+
+<h1>Will You Be My Valentine? ❤️</h1>
+
+<button onclick="yes()">YES 😍</button>
+<button id="noBtn">NO 😒</button>
+
+<br>
+<button onclick="go(3)">⬅️ Previous</button>
+
+</div>
+
+<!-- PAGE 5 FINAL -->
+<div class="page" id="page5">
+
+<div class="finalBox">
+<h2>💖 You Said YES…</h2>
+
+<p>
+I’ll always care about you.<br>
+I’ll stand beside you in every mood and moment.<br>
+I’ll protect your smile like it’s my favorite thing in the world.<br>
+I’ll be your calm when life feels heavy.<br>
+And no matter what… I’ll always choose you, again and again.
+</p>
+
+</div>
+
+<button onclick="go(4)">⬅️ Previous</button>
+
+</div>
+
+<audio id="loveAudio" src="assets/love.mp3"></audio>
+
+<script>
+
+function go(n){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById("page"+n).classList.add("active");
+
+if(n==5){
+document.getElementById("loveAudio").play();
+}
+}
+
+function blowCandles(){
+
+document.getElementById("cakeImg").src="assets/cake_off.png";
+
+/* ⭐ THIS IS THE ONLY CHANGE — hide blow button */
+document.getElementById("blowBtn").style.display="none";
+
+const after=document.getElementById("afterBlow");
+after.style.display="block";
+
+document.getElementById("p1").classList.add("photoPop");
+document.getElementById("p2").classList.add("photoPop");
+}
+
+function openLetter(){
+document.getElementById("l1").style.display="block";
+}
+
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"%";
+h.style.fontSize=(20+Math.random()*25)+"px";
+document.getElementById("hearts").appendChild(h);
+setTimeout(()=>h.remove(),6000);
+},600);
+
+const noBtn=document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>moveNo());
+noBtn.addEventListener("click",()=>moveNo());
+
+function moveNo(){
+noBtn.style.left=Math.random()*70+"vw";
+noBtn.style.top=Math.random()*70+"vh";
+}
+
+function yes(){go(5);}
+
+</script>
+
+</body>
+</html>
